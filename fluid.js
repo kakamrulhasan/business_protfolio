@@ -63,11 +63,10 @@ class FluidSimulation {
   }
   
   setupCanvas() {
-    // Make canvas full size of its parent wrapper
-    const rect = this.canvas.parentElement.getBoundingClientRect();
-    this.width = rect.width;
-    this.height = rect.height;
-    this.canvas.width = this.width;
+    // Canvas is fixed to viewport — always use window dimensions
+    this.width  = window.innerWidth;
+    this.height = window.innerHeight;
+    this.canvas.width  = this.width;
     this.canvas.height = this.height;
   }
   
