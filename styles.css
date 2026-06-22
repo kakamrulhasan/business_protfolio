@@ -29,6 +29,12 @@
 
   --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
   --t: 0.3s var(--ease);
+  --lg-bg-color: rgba(255, 255, 255, 0.08);
+  --lg-highlight: rgba(255, 255, 255, 0.42);
+  --lg-text: #ffffff;
+  --lg-hover-glow: rgba(255, 255, 255, 0.4);
+  --lg-red: #fb4268;
+  --lg-grey: #5b5b5b;
 }
 
 /* ── Reset ── */
@@ -1553,4 +1559,127 @@ button {
     bottom: 84px;
     width: 260px
   }
+}
+
+/* Header glass-container effect based on the provided layered sample. */
+.navbar {
+  cursor: default;
+  color: var(--lg-text);
+  background: transparent;
+  border: 0;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .26), 0 0 18px rgba(255, 255, 255, .05);
+  transition: top .4s cubic-bezier(.175, .885, .32, 2.2), box-shadow .4s cubic-bezier(.175, .885, .32, 2.2);
+}
+
+.navbar:hover {
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .3), 0 0 20px rgba(255, 255, 255, .12);
+}
+
+.navbar.scrolled {
+  background: transparent;
+  border: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .28), 0 0 18px rgba(255, 255, 255, .05);
+}
+
+.navbar::before,
+.navbar::after {
+  content: none;
+}
+
+.glass-filter,
+.glass-overlay,
+.glass-specular {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.glass-filter {
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, .10), rgba(255, 255, 255, .03) 44%, rgba(255, 255, 255, 0) 74%),
+    rgba(255, 255, 255, .015);
+  backdrop-filter: blur(12px) saturate(160%) brightness(1.02);
+  -webkit-backdrop-filter: blur(12px) saturate(160%) brightness(1.02);
+  filter: url(#lg-dist) contrast(1.08);
+  isolation: isolate;
+}
+
+.glass-overlay {
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, .025), transparent 58%),
+    var(--lg-bg-color);
+}
+
+.glass-specular {
+  z-index: 2;
+  overflow: hidden;
+  box-shadow:
+    inset 1px 1px 0 var(--lg-highlight),
+    inset -1px -1px 0 rgba(255, 255, 255, .10),
+    inset 0 0 4px rgba(255, 255, 255, .22),
+    inset 0 0 18px rgba(255, 255, 255, .07);
+}
+
+.glass-specular::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, .30), transparent 18%, transparent 68%, rgba(255, 255, 255, .10)),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, .22), transparent 38%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, .08), transparent 40%);
+  opacity: .48;
+}
+
+.glass-specular::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .24), transparent 14%, transparent 86%, rgba(255, 255, 255, .12)),
+    linear-gradient(180deg, rgba(255, 255, 255, .26), transparent 16%, transparent 82%, rgba(255, 255, 255, .08));
+  opacity: .42;
+}
+
+.glass-content {
+  position: relative;
+  z-index: 3;
+}
+
+.nav-inner.glass-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 1.5rem;
+}
+
+.nav-links {
+  background: rgba(255, 255, 255, .055);
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .18);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, .86);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fff;
+  background: rgba(255, 255, 255, .09);
+  border-color: rgba(255, 255, 255, .16);
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, .085);
+  border: 1px solid rgba(255, 255, 255, .18);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, .24),
+    0 6px 16px rgba(0, 0, 0, .16);
 }
