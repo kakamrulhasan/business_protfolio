@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Ether — Next-Gen Interactive Fluid Staking</title>
+  <meta name="description" content="Explore Liquid Ether: an interactive, real-time physics fluid simulation and decentralized staking dashboard showcasing next-generation visual design.">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Glow Blurs -->
+  <div class="glow-blur glow-top-right"></div>
+  <div class="glow-blur glow-bottom-left"></div>
+
+  <!-- SVG Gradient Definitions (used in logo and chart) -->
+  <svg style="width:0; height:0; position:absolute;" aria-hidden="true">
+    <defs>
+      <linearGradient id="ether-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f2fe" />
+        <stop offset="50%" stop-color="#4facfe" />
+        <stop offset="100%" stop-color="#7b61ff" />
+      </linearGradient>
+      <linearGradient id="chart-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7b61ff" />
+        <stop offset="50%" stop-color="#00f2fe" />
+        <stop offset="100%" stop-color="#ff007a" />
+      </linearGradient>
+      <linearGradient id="area-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#7b61ff" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#7b61ff" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Global Fluid Canvas (Fixed Background) -->
+  <div class="canvas-container">
+    <canvas id="fluid-canvas"></canvas>
+  </div>
+
+  <!-- Floating Glassmorphic Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo" data-tab="home-view">
+        <svg viewBox="0 0 100 100">
+          <path d="M50,15 L20,50 L50,65 L80,50 Z" />
+          <path d="M50,69 L20,54 L50,85 L80,54 Z" style="opacity: 0.7;" />
+        </svg>
+        <span>Liquid Ether</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#home-view" class="nav-link active" data-tab="home-view">Home</a></li>
+        <li><a href="#info-view" class="nav-link" data-tab="info-view">Info</a></li>
+        <li><a href="#features-view" class="nav-link" data-tab="features-view">Features</a></li>
+        <li><a href="#simulation-view" class="nav-link" data-tab="simulation-view">Simulation</a></li>
+      </ul>
+      
+      <a href="#info-view" class="nav-btn" data-tab="info-view">Launch App</a>
+    </div>
+  </nav>
+
+  <!-- Main Content Wrapper (Floats above canvas) -->
+  <div class="main-wrapper">
+    
+    <main class="content-area">
+      <!-- 1. HOME VIEW (Hero content) -->
+      <section id="home-view" class="tab-content active">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-tag">
+              <span></span> Live Simulation & Protocol Dashboard
+            </div>
+            <h1 class="hero-title">
+              Unlock the Flow of <span>Liquid Ether</span>
+            </h1>
+            <p class="hero-subtitle">
+              Hover, click, and interact with the fluid simulation in the background. Experience the fusion of next-generation glassmorphic design and real-time physics simulation.
+            </p>
+            <div class="hero-actions">
+              <a href="#simulation-view" class="btn btn-primary" data-tab="simulation-view">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Customize Fluid
+              </a>
+              <a href="#info-view" class="btn btn-secondary" data-tab="info-view">
+                Explore Analytics <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. INFO VIEW (Stats & Staking Analytics) -->
+      <section id="info-view" class="tab-content">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Staking Analytics</span>
+            <h2 class="section-title">Protocol Overview</h2>
+            <p class="section-subtitle">Real-time tracking of Liquid Ether yields, liquidity pools, and network security contributions.</p>
+          </div>
+
+          <div class="dashboard-grid">
+            <!-- TVL Card -->
+            <div class="glass-card card-span-4">
+              <div class="stat-header">
+                <span class="stat-title">Total Value Locked</span>
+                <div class="stat-icon-wrapper">
+                  <i class="fa-solid fa-vault"></i>
+                </div>
+              </div>
+              <div class="stat-value" id="stat-tvl">$0M</div>
+              <div class="stat-trend trend-up">
+                <i class="fa-solid fa-circle-arrow-up"></i> +14.2% <span style="color: var(--color-text-muted); font-weight: normal; margin-left: 4px;">this week</span>
+              </div>
+            </div>
+
+            <!-- APR Card -->
+            <div class="glass-card card-span-4">
+              <div class="stat-header">
+                <span class="stat-title">Staking APR</span>
+                <div class="stat-icon-wrapper cyan">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+              </div>
+              <div class="stat-value" id="stat-apr">0.00%</div>
+              <div class="stat-trend trend-up">
+                <i class="fa-solid fa-circle-arrow-up"></i> Dynamic <span style="color: var(--color-text-muted); font-weight: normal; margin-left: 4px;">consensus yield</span>
+              </div>
+            </div>
+
+            <!-- Node Operators Card -->
+            <div class="glass-card card-span-4">
+              <div class="stat-header">
+                <span class="stat-title">Active Validators</span>
+                <div class="stat-icon-wrapper gold">
+                  <i class="fa-solid fa-server"></i>
+                </div>
+              </div>
+              <div class="stat-value" id="stat-validators">0</div>
+              <div class="stat-trend trend-up">
+                <i class="fa-solid fa-shield-halved"></i> 100% <span style="color: var(--color-text-muted); font-weight: normal; margin-left: 4px;">uptime guarantee</span>
+              </div>
+            </div>
+
+            <!-- SVG Chart Card -->
+            <div class="glass-card card-span-12" style="padding-bottom: 1.5rem;">
+              <div class="stat-header" style="margin-bottom: 0.5rem;">
+                <div>
+                  <span class="stat-title" style="display: block; margin-bottom: 0.25rem;">Liquid Ether Price Trend</span>
+                  <span class="stat-value" style="font-size: 1.75rem; display: inline-block; margin: 0;">1.0423 ETH / lETH</span>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-size: 0.85rem; color: #10b981; font-weight: 600;"><i class="fa-solid fa-caret-up"></i> 0.38% (24h)</span>
+                  <span style="display: block; font-size: 0.75rem; color: var(--color-text-muted);">Peg stability index</span>
+                </div>
+              </div>
+              
+              <div class="chart-container" id="chart-card">
+                <svg class="chart-svg" viewBox="0 0 1000 250" preserveAspectRatio="none">
+                  <line class="chart-grid-line" x1="0" y1="50" x2="1000" y2="50" />
+                  <line class="chart-grid-line" x1="0" y1="100" x2="1000" y2="100" />
+                  <line class="chart-grid-line" x1="0" y1="150" x2="1000" y2="150" />
+                  <line class="chart-grid-line" x1="0" y1="200" x2="1000" y2="200" />
+                  
+                  <clipPath id="chart-clip">
+                    <path id="chart-clip-path" d="M0,250 L0,180 L100,160 L200,190 L300,150 L400,170 L500,120 L600,140 L700,90 L800,110 L900,60 L1000,70 L1000,250 Z" />
+                  </clipPath>
+                  
+                  <path class="chart-area" d="M0,250 L0,180 L100,160 L200,190 L300,150 L400,170 L500,120 L600,140 L700,90 L800,110 L900,60 L1000,70 L1000,250 Z" />
+                  <path class="chart-line" id="chart-stroke" d="M0,180 L100,160 L200,190 L300,150 L400,170 L500,120 L600,140 L700,90 L800,110 L900,60 L1000,70" />
+                </svg>
+                <div class="chart-tooltip" id="chart-tooltip"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. FEATURES VIEW (Protocol Features) -->
+      <section id="features-view" class="tab-content">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Core Mechanics</span>
+            <h2 class="section-title">Why Liquid Ether?</h2>
+            <p class="section-subtitle">Traditional Ethereum staking locks up your assets. Liquid Ether frees your capital while earning compound consensus rewards.</p>
+          </div>
+
+          <div class="features-grid">
+            <div class="glass-card feature-card">
+              <div class="feature-icon-box">
+                <i class="fa-solid fa-droplet"></i>
+              </div>
+              <h3 class="feature-title">Instant Liquidity</h3>
+              <p class="feature-desc">Receive fully-backed lETH tokens instantly. Trade, stake, or leverage them in DeFi protocols without any unbonding delays or lockups.</p>
+            </div>
+
+            <div class="glass-card feature-card">
+              <div class="feature-icon-box">
+                <i class="fa-solid fa-coins"></i>
+              </div>
+              <h3 class="feature-title">Compounding Yield</h3>
+              <p class="feature-desc">Rewards accumulate directly into your token value. Your lETH balance appreciates relative to Ethereum as validation nodes receive block rewards.</p>
+            </div>
+
+            <div class="glass-card feature-card">
+              <div class="feature-icon-box">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 class="feature-title">Decentralized Security</h3>
+              <p class="feature-desc">Stake across a highly distributed set of vetted node operators, reducing slashing risks and contributing to core Ethereum decentralization.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. SIMULATION VIEW (Fluid Customizer) -->
+      <section id="simulation-view" class="tab-content">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Real-Time Canvas Physics</span>
+            <h2 class="section-title">Customize the Simulation</h2>
+            <p class="section-subtitle">Fine-tune the mathematical physics running in the background. Control viscosity, flow speeds, and the appearance of Liquid Ether.</p>
+          </div>
+
+          <div class="controls-container">
+            <!-- Left: Interactive Sandbox display -->
+            <div class="controls-visualizer">
+              <div class="visualizer-orb"></div>
+              <div class="visualizer-orb-2"></div>
+              <div class="visualizer-glass">
+                <div class="visualizer-title">Active Fluid State</div>
+                <p class="visualizer-desc">Interact directly by clicking, dragging, and hovering anywhere on the screen to inject vector velocities into the fluid backdrop.</p>
+                <div id="active-state-tag" style="margin-top: 1rem; font-size: 0.8rem; background: rgba(123,97,255,0.2); padding: 0.35rem 0.75rem; border-radius: 20px; font-family: monospace; border: 1px solid rgba(123,97,255,0.3);">
+                  Velocity Field: Idle
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Physics controls panel -->
+            <div class="glass-card">
+              <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; font-family: 'Outfit';">Control Panel</h3>
+              
+              <div class="control-groups">
+                <!-- Viscosity -->
+                <div class="control-item">
+                  <div class="control-label-row">
+                    <span class="control-name">Viscosity (Friction)</span>
+                    <span class="control-value" id="val-viscosity">0.96</span>
+                  </div>
+                  <input type="range" class="control-slider" id="slide-viscosity" min="0.85" max="0.99" step="0.01" value="0.96">
+                </div>
+
+                <!-- Particle Density -->
+                <div class="control-item">
+                  <div class="control-label-row">
+                    <span class="control-name">Particle Density</span>
+                    <span class="control-value" id="val-particles">1200</span>
+                  </div>
+                  <input type="range" class="control-slider" id="slide-particles" min="200" max="3000" step="100" value="1200">
+                </div>
+
+                <!-- Influence Radius -->
+                <div class="control-item">
+                  <div class="control-label-row">
+                    <span class="control-name">Mouse Influence Radius</span>
+                    <span class="control-value" id="val-radius">80px</span>
+                  </div>
+                  <input type="range" class="control-slider" id="slide-radius" min="40" max="200" step="10" value="80">
+                </div>
+
+                <!-- Colors -->
+                <div class="control-item">
+                  <span class="control-name" style="font-size: 0.9rem; font-weight: 500;">Fluid Color Palette</span>
+                  <div class="control-buttons">
+                    <button class="btn-control active" data-theme="ether">Cosmic Ether</button>
+                    <button class="btn-control" data-theme="gold">Staking Gold</button>
+                    <button class="btn-control" data-theme="neon">Plasma Fire</button>
+                  </div>
+                </div>
+                
+                <!-- Reset -->
+                <button class="btn-control" id="btn-reset" style="background: rgba(255, 255, 255, 0.05); color: #fff; margin-top: 1rem; border-color: rgba(255, 255, 255, 0.1);">
+                  <i class="fa-solid fa-rotate-left"></i> Reset Simulation
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (Universal bottom) -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="#" class="logo" data-tab="home-view">
+              <svg viewBox="0 0 100 100">
+                <path d="M50,15 L20,50 L50,65 L80,50 Z" />
+                <path d="M50,69 L20,54 L50,85 L80,54 Z" style="opacity: 0.7;" />
+              </svg>
+              <span>Liquid Ether</span>
+            </a>
+            <p class="footer-desc">
+              Decentralized liquid staking protocol designed with gorgeous, modern interfaces, and cutting-edge user experiences.
+            </p>
+          </div>
+          
+          <div class="footer-links-grid">
+            <div>
+              <h4 class="footer-col-title">Protocol</h4>
+              <ul class="footer-links">
+                <li><a href="#info-view" class="footer-link" data-tab="info-view">Staking App</a></li>
+                <li><a href="#features-view" class="footer-link" data-tab="features-view">Features</a></li>
+                <li><a href="#simulation-view" class="footer-link" data-tab="simulation-view">Simulator</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="footer-col-title">Community</h4>
+              <ul class="footer-links">
+                <li><a href="#" class="footer-link">Twitter</a></li>
+                <li><a href="#" class="footer-link">Discord</a></li>
+                <li><a href="#" class="footer-link">GitHub</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2026 Liquid Ether Protocol. All rights reserved.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="fluid.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
