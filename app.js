@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ══════════ 2. FLOATING NAVBAR — SCROLL HIGHLIGHT ══════════ */
-  const navbar  = document.getElementById('navbar');
+  const navbar = document.getElementById('navbar');
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
@@ -32,14 +32,49 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ══════════ 2.5. SERVICE SECTION SLIDES ══════════ */
+  const servicesSection = document.querySelector('.services-section');
+  const serviceSlides = Array.from(document.querySelectorAll('.service-slide'));
+  const serviceSteps = Array.from(document.querySelectorAll('.service-step'));
+
+  function setActiveService(index) {
+    serviceSlides.forEach((slide, slideIndex) => {
+      slide.classList.toggle('active', slideIndex === index);
+    });
+    serviceSteps.forEach((step, stepIndex) => {
+      step.classList.toggle('active', stepIndex === index);
+    });
+  }
+
+  const serviceObserver = new IntersectionObserver((entries) => {
+    let bestIndex = null;
+    let bestRatio = 0;
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const index = serviceSlides.indexOf(entry.target);
+      if (index < 0) return;
+      if (entry.intersectionRatio > bestRatio) {
+        bestRatio = entry.intersectionRatio;
+        bestIndex = index;
+      }
+    });
+    if (bestIndex !== null) setActiveService(bestIndex);
+  }, {
+    root: null,
+    rootMargin: '-40% 0px -40% 0px',
+    threshold: [0.25, 0.5, 0.75],
+  });
+
+  serviceSlides.forEach(slide => serviceObserver.observe(slide));
+  setActiveService(0);
 
   /* ══════════ 3. SETTINGS PANEL ══════════ */
   const settingsToggle = document.getElementById('settingsToggle');
-  const settingsPanel  = document.getElementById('settingsPanel');
-  const settingsClose  = document.getElementById('settingsClose');
+  const settingsPanel = document.getElementById('settingsPanel');
+  const settingsClose = document.getElementById('settingsClose');
 
   settingsToggle.addEventListener('click', () => settingsPanel.classList.toggle('open'));
-  settingsClose.addEventListener('click',  () => settingsPanel.classList.remove('open'));
+  settingsClose.addEventListener('click', () => settingsPanel.classList.remove('open'));
 
   // Close panel on outside click
   document.addEventListener('click', (e) => {
@@ -50,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Viscosity
   const slideViscosity = document.getElementById('slide-viscosity');
-  const valViscosity   = document.getElementById('val-viscosity');
+  const valViscosity = document.getElementById('val-viscosity');
   slideViscosity?.addEventListener('input', e => {
     valViscosity.textContent = e.target.value;
     fluidSim.setViscosity(e.target.value);
@@ -58,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Particles
   const slideParticles = document.getElementById('slide-particles');
-  const valParticles   = document.getElementById('val-particles');
+  const valParticles = document.getElementById('val-particles');
   slideParticles?.addEventListener('input', e => {
     valParticles.textContent = e.target.value;
     fluidSim.setParticleDensity(e.target.value);
@@ -66,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Radius
   const slideRadius = document.getElementById('slide-radius');
-  const valRadius   = document.getElementById('val-radius');
+  const valRadius = document.getElementById('val-radius');
   slideRadius?.addEventListener('input', e => {
     valRadius.textContent = e.target.value + 'px';
     fluidSim.setInfluenceRadius(e.target.value);
@@ -88,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fluidSim.reset();
     slideViscosity.value = 0.96; valViscosity.textContent = '0.96'; fluidSim.setViscosity(0.96);
     slideParticles.value = 1200; valParticles.textContent = '1200'; fluidSim.setParticleDensity(1200);
-    slideRadius.value    = 80;   valRadius.textContent    = '80px'; fluidSim.setInfluenceRadius(80);
+    slideRadius.value = 80; valRadius.textContent = '80px'; fluidSim.setInfluenceRadius(80);
     themeBtns.forEach(b => b.classList.remove('active'));
     document.querySelector('.theme-btn[data-theme="ether"]')?.classList.add('active');
     fluidSim.setTheme('ether');
@@ -113,11 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const el    = entry.target;
-      const end   = parseInt(el.dataset.count, 10);
-      const dur   = 1400;
+      const el = entry.target;
+      const end = parseInt(el.dataset.count, 10);
+      const dur = 1400;
       const start = performance.now();
-      const tick  = (now) => {
+      const tick = (now) => {
         const p = Math.min((now - start) / dur, 1);
         el.textContent = Math.floor(p * (2 - p) * end); // ease-out quad
         if (p < 1) requestAnimationFrame(tick);
@@ -143,8 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ══════════ 7. CONTACT FORM ══════════ */
-  const contactForm    = document.getElementById('contactForm');
-  const formSuccess    = document.getElementById('formSuccess');
+  const contactForm = document.getElementById('contactForm');
+  const formSuccess = document.getElementById('formSuccess');
 
   contactForm?.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -154,8 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Simulate async send
     setTimeout(() => {
-      contactForm.style.display   = 'none';
-      formSuccess.style.display   = 'flex';
+      contactForm.style.display = 'none';
+      formSuccess.style.display = 'flex';
     }, 1500);
   });
 

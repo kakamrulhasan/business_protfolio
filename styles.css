@@ -783,7 +783,7 @@ button {
 .services-section {
   position: relative;
   z-index: 10;
-  padding: 6rem 0;
+  padding: 5rem 0;
   background: rgba(7, 8, 15, .7);
   backdrop-filter: blur(4px);
 }
@@ -843,16 +843,86 @@ button {
   transform: scale(1.03);
 }
 
-/* Service Cards Grid */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 1rem;
+/* Service slide stage */
+.services-story {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.services-stage {
+  position: relative;
+  width: 100%;
+}
+
+.service-slide {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 220px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px);
+  transition: opacity .45s ease, transform .45s ease, visibility 0s linear .45s;
+  pointer-events: none;
+}
+
+.service-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+  pointer-events: auto;
 }
 
 .service-card {
-  padding: 2rem 1.75rem
+  width: min(100%, 840px);
+  padding: 2.4rem 2rem;
+  transform: translate3d(0, 0, 0);
+  transition: transform .35s ease-out, box-shadow .35s ease-out;
+  will-change: transform;
+}
+
+.services-stage-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  margin-top: 1.35rem;
+}
+
+.services-stage-label {
+  color: var(--text2);
+  letter-spacing: .08em;
+  font-size: .82rem;
+  text-transform: uppercase;
+}
+
+.services-stage-progress {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .65rem;
+}
+
+.service-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  color: var(--text2);
+  font-size: .82rem;
+  font-weight: 600;
+  transition: transform .25s ease, background .25s ease, color .25s ease;
+}
+
+.service-step.active {
+  background: rgba(255, 255, 255, .20);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 .service-icon {
@@ -910,7 +980,7 @@ button {
 .about-section {
   position: relative;
   z-index: 10;
-  padding: 6rem 0;
+  padding: 4.5rem 0;
   background: rgba(13, 15, 26, .75);
   backdrop-filter: blur(4px);
 }

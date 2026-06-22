@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liquid Ether — Creative Tech Studio</title>
-  <meta name="description" content="Liquid Ether — A creative tech studio specialising in Website Design, Mobile App, UI/UX, AI Agents, Software Development and more.">
+  <meta name="description"
+    content="Liquid Ether — A creative tech studio specialising in Website Design, Mobile App, UI/UX, AI Agents, Software Development and more.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- Fixed fluid canvas background -->
@@ -17,27 +20,28 @@
   <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
     <defs>
       <linearGradient id="ether-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#00f2fe"/>
-        <stop offset="50%" stop-color="#4facfe"/>
-        <stop offset="100%" stop-color="#7b61ff"/>
+        <stop offset="0%" stop-color="#00f2fe" />
+        <stop offset="50%" stop-color="#4facfe" />
+        <stop offset="100%" stop-color="#7b61ff" />
       </linearGradient>
       <linearGradient id="chart-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#7b61ff"/>
-        <stop offset="50%" stop-color="#00f2fe"/>
-        <stop offset="100%" stop-color="#ff007a"/>
+        <stop offset="0%" stop-color="#7b61ff" />
+        <stop offset="50%" stop-color="#00f2fe" />
+        <stop offset="100%" stop-color="#ff007a" />
       </linearGradient>
       <linearGradient id="area-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#7b61ff" stop-opacity="0.4"/>
-        <stop offset="100%" stop-color="#7b61ff" stop-opacity="0"/>
+        <stop offset="0%" stop-color="#7b61ff" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#7b61ff" stop-opacity="0" />
       </linearGradient>
       <filter id="lg-dist" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
-        <feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="2" seed="8" result="noise"/>
-        <feGaussianBlur in="noise" stdDeviation="1.4" result="blurredNoise"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="2" seed="8" result="noise" />
+        <feGaussianBlur in="noise" stdDeviation="1.4" result="blurredNoise" />
         <feComponentTransfer in="blurredNoise" result="contrastNoise">
-          <feFuncR type="gamma" amplitude="1.65" exponent="0.65" offset="-0.2"/>
-          <feFuncG type="gamma" amplitude="1.65" exponent="0.65" offset="-0.2"/>
+          <feFuncR type="gamma" amplitude="1.65" exponent="0.65" offset="-0.2" />
+          <feFuncG type="gamma" amplitude="1.65" exponent="0.65" offset="-0.2" />
         </feComponentTransfer>
-        <feDisplacementMap in="SourceGraphic" in2="contrastNoise" scale="56" xChannelSelector="R" yChannelSelector="G"/>
+        <feDisplacementMap in="SourceGraphic" in2="contrastNoise" scale="56" xChannelSelector="R"
+          yChannelSelector="G" />
       </filter>
     </defs>
   </svg>
@@ -49,14 +53,17 @@
     <span class="glass-specular" aria-hidden="true"></span>
     <div class="nav-inner glass-content">
       <a href="#hero" class="logo">
-        <svg viewBox="0 0 100 100"><path d="M50,15 L20,50 L50,65 L80,50 Z"/><path d="M50,69 L20,54 L50,85 L80,54 Z" style="opacity:.7"/></svg>
+        <svg viewBox="0 0 100 100">
+          <path d="M50,15 L20,50 L50,65 L80,50 Z" />
+          <path d="M50,69 L20,54 L50,85 L80,54 Z" style="opacity:.7" />
+        </svg>
         <span>Liquid Ether</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#hero"     class="nav-link active">Home</a></li>
+        <li><a href="#hero" class="nav-link active">Home</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#about"    class="nav-link">About</a></li>
-        <li><a href="#contact"  class="nav-link">Contact</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <a href="#contact" class="nav-btn">Hire Me</a>
     </div>
@@ -112,11 +119,13 @@
     <div class="container">
       <div class="hero-content reveal">
         <div class="hero-tag"><span class="dot"></span> Full-Stack Creative Studio</div>
-        <h1 class="hero-title">Crafting Digital<br><span class="gradient-text">Experiences</span> That<br>Inspire & Convert</h1>
-        <p class="hero-subtitle">We build websites, mobile apps, AI agents, and software solutions that push boundaries — beautifully engineered and driven by data.</p>
+        <h1 class="hero-title">Crafting Digital<br><span class="gradient-text">Experiences</span> That<br>Inspire &
+          Convert</h1>
+        <p class="hero-subtitle">We build websites, mobile apps, AI agents, and software solutions that push boundaries
+          — beautifully engineered and driven by data.</p>
         <div class="hero-actions">
           <a href="#services" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Our Services</a>
-          <a href="#contact"  class="btn btn-secondary">Let's Talk <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="btn btn-secondary">Let's Talk <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="hero-stats">
           <div class="stat-pill"><strong>50+</strong> Projects</div>
@@ -133,7 +142,8 @@
     <div class="container reveal">
       <span class="section-tag">What We Do</span>
       <h2 class="section-title">Our Services</h2>
-      <p class="section-subtitle">From idea to deployment — we cover the full spectrum of digital product development.</p>
+      <p class="section-subtitle">From idea to deployment — we cover the full spectrum of digital product development.
+      </p>
     </div>
 
     <!-- Auto-scrolling horizontal marquee -->
@@ -166,42 +176,63 @@
 
     <!-- Service cards -->
     <div class="container">
-      <div class="services-grid">
-        <div class="service-card glass-card reveal">
-          <div class="service-icon" style="--icon-color:#00f2fe"><i class="fa-solid fa-globe"></i></div>
-          <h3>Website Design</h3>
-          <p>Stunning, responsive websites crafted with pixel-perfect precision and optimised for speed, SEO, and conversions.</p>
-          <a href="#contact" class="card-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="services-story">
+        <div class="services-stage" id="servicesStage">
+          <article class="service-slide active">
+            <div class="service-card glass-card">
+              <div class="service-icon" style="--icon-color:#00f2fe"><i class="fa-solid fa-globe"></i></div>
+              <h3>Website Development</h3>
+              <p>Web development services with responsive design, fast performance, SEO-friendly structure, and
+                sales-focused UX.</p>
+              <a href="#contact" class="card-link">Start Website Project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="service-slide">
+            <div class="service-card glass-card">
+              <div class="service-icon" style="--icon-color:#7b61ff"><i class="fa-solid fa-mobile-screen"></i></div>
+              <h3>Mobile App</h3>
+              <p>Mobile apps built for iOS and Android with engaging flows, native feel, and modern performance
+                optimisations.</p>
+              <a href="#contact" class="card-link">Start Mobile App <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="service-slide">
+            <div class="service-card glass-card">
+              <div class="service-icon" style="--icon-color:#ff007a"><i class="fa-solid fa-pen-ruler"></i></div>
+              <h3>UI / UX Design</h3>
+              <p>High-fidelity UI and UX design systems that make products intuitive, polished, and easy for users to
+                navigate.</p>
+              <a href="#contact" class="card-link">Start UX Design <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="service-slide">
+            <div class="service-card glass-card">
+              <div class="service-icon" style="--icon-color:#10b981"><i class="fa-solid fa-server"></i></div>
+              <h3>Backend Engineering</h3>
+              <p>Secure APIs, reliable data architecture, and scalable backend systems designed to support complex
+                products.</p>
+              <a href="#contact" class="card-link">Start Backend Build <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="service-slide">
+            <div class="service-card glass-card">
+              <div class="service-icon" style="--icon-color:#f59e0b"><i class="fa-solid fa-robot"></i></div>
+              <h3>AI & Automation</h3>
+              <p>AI agents, automation tools, and intelligent workflows that simplify operations and power better
+                decisions.</p>
+              <a href="#contact" class="card-link">Start AI Project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
         </div>
-        <div class="service-card glass-card reveal">
-          <div class="service-icon" style="--icon-color:#7b61ff"><i class="fa-solid fa-mobile-screen"></i></div>
-          <h3>Mobile App</h3>
-          <p>Cross-platform iOS and Android applications with seamless UX, native performance, and robust architecture.</p>
-          <a href="#contact" class="card-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card glass-card reveal">
-          <div class="service-icon" style="--icon-color:#ff007a"><i class="fa-solid fa-pen-ruler"></i></div>
-          <h3>UI / UX Design</h3>
-          <p>Research-driven design systems, wireframes, and high-fidelity prototypes that users love.</p>
-          <a href="#contact" class="card-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card glass-card reveal">
-          <div class="service-icon" style="--icon-color:#f59e0b"><i class="fa-solid fa-robot"></i></div>
-          <h3>AI Agent Dev</h3>
-          <p>Custom autonomous AI agents, chatbots, workflow automation, and LLM integrations tailored to your business.</p>
-          <a href="#contact" class="card-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card glass-card reveal">
-          <div class="service-icon" style="--icon-color:#4facfe"><i class="fa-solid fa-code"></i></div>
-          <h3>Software Development</h3>
-          <p>Scalable, maintainable software solutions from MVPs to enterprise platforms — built with modern stacks.</p>
-          <a href="#contact" class="card-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card glass-card reveal">
-          <div class="service-icon" style="--icon-color:#10b981"><i class="fa-solid fa-server"></i></div>
-          <h3>Backend Engineering</h3>
-          <p>High-performance APIs, microservices, database design, and cloud infrastructure engineered for reliability.</p>
-          <a href="#contact" class="card-link">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="services-stage-footer">
+          <span class="services-stage-label">Scroll through service details</span>
+          <div class="services-stage-progress">
+            <span class="service-step active">Web</span>
+            <span class="service-step">App</span>
+            <span class="service-step">UI/UX</span>
+            <span class="service-step">Backend</span>
+            <span class="service-step">AI</span>
+          </div>
         </div>
       </div>
     </div>
@@ -238,8 +269,12 @@
         <div class="about-content reveal">
           <span class="section-tag">About Me</span>
           <h2 class="section-title" style="text-align:left">The Developer<br>Behind the Magic</h2>
-          <p class="about-bio">I'm a passionate full-stack developer and AI engineer with 5+ years of experience building world-class digital products. I believe great software is equal parts craft and science — every pixel, every line of code, and every interaction is intentional.</p>
-          <p class="about-bio" style="margin-top:1rem">From building AI-powered automation tools to designing breathtaking user interfaces, I bring ideas to life with precision, creativity, and relentless attention to detail.</p>
+          <p class="about-bio">I'm a passionate full-stack developer and AI engineer with 5+ years of experience
+            building world-class digital products. I believe great software is equal parts craft and science — every
+            pixel, every line of code, and every interaction is intentional.</p>
+          <p class="about-bio" style="margin-top:1rem">From building AI-powered automation tools to designing
+            breathtaking user interfaces, I bring ideas to life with precision, creativity, and relentless attention to
+            detail.</p>
 
           <div class="about-stats">
             <div class="about-stat glass-card">
@@ -257,10 +292,26 @@
           </div>
 
           <div class="skills-list">
-            <div class="skill-row"><span>UI / UX Design</span><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div><span class="skill-pct">92%</span></div>
-            <div class="skill-row"><span>Frontend Dev</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div><span class="skill-pct">95%</span></div>
-            <div class="skill-row"><span>Backend Engineering</span><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div><span class="skill-pct">88%</span></div>
-            <div class="skill-row"><span>AI / ML Integration</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div><span class="skill-pct">80%</span></div>
+            <div class="skill-row"><span>UI / UX Design</span>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="92"></div>
+              </div><span class="skill-pct">92%</span>
+            </div>
+            <div class="skill-row"><span>Frontend Dev</span>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="95"></div>
+              </div><span class="skill-pct">95%</span>
+            </div>
+            <div class="skill-row"><span>Backend Engineering</span>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="88"></div>
+              </div><span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-row"><span>AI / ML Integration</span>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width="80"></div>
+              </div><span class="skill-pct">80%</span>
+            </div>
           </div>
         </div>
       </div>
@@ -273,7 +324,8 @@
       <div class="section-header reveal">
         <span class="section-tag">Let's Connect</span>
         <h2 class="section-title">Start Your Project</h2>
-        <p class="section-subtitle">Ready to build something amazing? Drop me a message and I'll get back to you within 24 hours.</p>
+        <p class="section-subtitle">Ready to build something amazing? Drop me a message and I'll get back to you within
+          24 hours.</p>
       </div>
 
       <div class="contact-grid">
@@ -303,7 +355,9 @@
 
           <!-- Social Media Links -->
           <div class="social-section glass-card">
-            <h4 style="margin-bottom:1.25rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary)">Follow & Connect</h4>
+            <h4
+              style="margin-bottom:1.25rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary)">
+              Follow & Connect</h4>
             <div class="social-grid">
               <a href="#" class="social-link-card">
                 <i class="fa-brands fa-github"></i>
@@ -388,10 +442,14 @@
       <div class="footer-top">
         <div class="footer-brand">
           <a href="#hero" class="logo">
-            <svg viewBox="0 0 100 100"><path d="M50,15 L20,50 L50,65 L80,50 Z"/><path d="M50,69 L20,54 L50,85 L80,54 Z" style="opacity:.7"/></svg>
+            <svg viewBox="0 0 100 100">
+              <path d="M50,15 L20,50 L50,65 L80,50 Z" />
+              <path d="M50,69 L20,54 L50,85 L80,54 Z" style="opacity:.7" />
+            </svg>
             <span>Liquid Ether</span>
           </a>
-          <p class="footer-desc">Creative tech studio building next-generation digital products — from AI agents to beautiful interfaces.</p>
+          <p class="footer-desc">Creative tech studio building next-generation digital products — from AI agents to
+            beautiful interfaces.</p>
           <div class="footer-socials">
             <a href="#" class="social-icon"><i class="fa-brands fa-github"></i></a>
             <a href="#" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
@@ -414,10 +472,10 @@
           <div>
             <h4 class="footer-col-title">Company</h4>
             <ul class="footer-links">
-              <li><a href="#about"   class="footer-link">About</a></li>
+              <li><a href="#about" class="footer-link">About</a></li>
               <li><a href="#contact" class="footer-link">Contact</a></li>
-              <li><a href="#"        class="footer-link">Blog</a></li>
-              <li><a href="#"        class="footer-link">Privacy Policy</a></li>
+              <li><a href="#" class="footer-link">Blog</a></li>
+              <li><a href="#" class="footer-link">Privacy Policy</a></li>
             </ul>
           </div>
         </div>
@@ -432,4 +490,5 @@
   <script src="fluid.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>
