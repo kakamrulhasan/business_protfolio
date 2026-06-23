@@ -4,6 +4,56 @@
  * about counters, skill bars, and contact form.
  */
 document.addEventListener('DOMContentLoaded', () => {
+  const galleryImages = Array.from(document.querySelectorAll('.service-gallery-track img'));
+  const lightbox = document.getElementById('imageLightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const closeBtn = document.getElementById('lightboxClose');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+  let activeImageIndex = 0;
+
+  const openLightbox = (index) => {
+    activeImageIndex = index;
+    const img = galleryImages[activeImageIndex];
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  galleryImages.forEach((img, index) => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  const showNextImage = () => {
+    const nextIndex = (activeImageIndex + 1) % galleryImages.length;
+    openLightbox(nextIndex);
+  };
+
+  const showPrevImage = () => {
+    const prevIndex = (activeImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    openLightbox(prevIndex);
+  };
+
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', showPrevImage);
+  nextBtn.addEventListener('click', showNextImage);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNextImage();
+    if (e.key === 'ArrowLeft') showPrevImage();
+  });
+
 
   /* ══════════ 1. FLUID SIMULATION ══════════ */
   const fluidSim = new FluidSimulation('fluid-canvas');
