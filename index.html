@@ -180,6 +180,14 @@
         <div class="services-stage" id="servicesStage">
           <article class="service-slide active">
             <div class="service-card glass-card">
+              <div class="service-media service-gallery">
+                <div class="service-gallery-track">
+                  <img src="images/web/full stack developer.png" alt="Modern business website layout preview">
+                  <img src="images/web/mern developer.png" alt="Responsive website UI design preview">
+                  <img src="images/web/web development.png" alt="Creative website development showcase">
+                  <img src="images/web/website design.png" alt="Custom website project illustration">
+                </div>
+              </div>
               <div class="service-icon" style="--icon-color:#00f2fe"><i class="fa-solid fa-globe"></i></div>
               <h3>Website Development</h3>
               <p>Web development services with responsive design, fast performance, SEO-friendly structure, and
@@ -189,6 +197,15 @@
           </article>
           <article class="service-slide">
             <div class="service-card glass-card">
+              <div class="service-media service-gallery app-gallery">
+                <div class="service-gallery-track">
+                  <img src="images/app/Ecommerce App.png" alt="Mobile app UI layout preview">
+                  <img src="images/app/Food_Delivery_Moble_App.png" alt="Mobile app dashboard preview">
+                  <img src="images/app/Gemini_Generated_Image_ka6vo7ka6vo7ka6v.png" alt="Mobile app feature showcase">
+                  <img src="images/app/fd-Photoroom.png" alt="Mobile app feature showcase">
+                  <img src="images/app/fd.png" alt="Mobile app feature showcase">
+                </div>
+              </div>
               <div class="service-icon" style="--icon-color:#7b61ff"><i class="fa-solid fa-mobile-screen"></i></div>
               <h3>Mobile App</h3>
               <p>Mobile apps built for iOS and Android with engaging flows, native feel, and modern performance
@@ -359,30 +376,33 @@
               style="margin-bottom:1.25rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary)">
               Follow & Connect</h4>
             <div class="social-grid">
-              <a href="#" class="social-link-card">
+              <a href="https://github.com/kakamrulhasan" target="_blank" rel="noopener noreferrer"
+                class="social-link-card">
                 <i class="fa-brands fa-github"></i>
                 <span>GitHub</span>
               </a>
-              <a href="#" class="social-link-card">
+              <a href="https://www.linkedin.com/in/ka-kamrul-hasan-ab90391b7" target="_blank" rel="noopener noreferrer"
+                class="social-link-card">
                 <i class="fa-brands fa-linkedin"></i>
                 <span>LinkedIn</span>
               </a>
-              <a href="#" class="social-link-card">
+              <a href="https://x.com/KAKamrulHasan1" target="_blank" rel="noopener noreferrer" class="social-link-card">
                 <i class="fa-brands fa-x-twitter"></i>
-                <span>Twitter/X</span>
+                <span>X</span>
               </a>
-              <a href="#" class="social-link-card" style="--s-color:#e1306c">
+              <a href="https://www.instagram.com/kakamrulhasan/" target="_blank" rel="noopener noreferrer"
+                class="social-link-card" style="--s-color:#e1306c">
                 <i class="fa-brands fa-instagram"></i>
                 <span>Instagram</span>
               </a>
-              <a href="#" class="social-link-card" style="--s-color:#ff0000">
+              <!-- <a href="#" class="social-link-card" style="--s-color:#ff0000">
                 <i class="fa-brands fa-youtube"></i>
                 <span>YouTube</span>
               </a>
               <a href="#" class="social-link-card" style="--s-color:#ea4c89">
                 <i class="fa-brands fa-dribbble"></i>
                 <span>Dribbble</span>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -486,6 +506,13 @@
       </div>
     </div>
   </footer>
+
+  <div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">←</button>
+    <img id="lightboxImage" src="" alt="Preview">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">→</button>
+  </div>
 
   <script src="fluid.js"></script>
   <script src="app.js"></script>
