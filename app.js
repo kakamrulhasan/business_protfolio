@@ -231,17 +231,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
 
-  contactForm?.addEventListener('submit', (e) => {
+  contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    const firstName = document.getElementById('fname')?.value?.trim() || '';
+    const lastName = document.getElementById('lname')?.value?.trim() || '';
+    const email = document.getElementById('email')?.value?.trim() || '';
+    const service = document.getElementById('service')?.value?.trim() || 'Not specified';
+    const message = document.getElementById('message')?.value?.trim() || '';
     const btn = contactForm.querySelector('button[type="submit"]');
+
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
     btn.disabled = true;
 
-    // Simulate async send
-    setTimeout(() => {
+    const subject = `New portfolio inquiry from ${firstName} ${lastName}`.trim();
+    const formData = new FormData(contactForm);
+    formData.set('_subject', subject);
+    formData.set('_replyto', email);
+    formData.set('_captcha', 'false');
+    formData.set('_template', 'table');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/kakamrul2000@gmail.com', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error('Submission failed');
+
+      contactForm.reset();
       contactForm.style.display = 'none';
       formSuccess.style.display = 'flex';
-    }, 1500);
+    } catch (error) {
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Try Again';
+      btn.disabled = false;
+      alert('Sorry, the message could not be sent right now. Please try again.');
+    }
   });
 
 
