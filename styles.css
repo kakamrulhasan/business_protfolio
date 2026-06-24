@@ -882,6 +882,20 @@ button {
   transform: translate3d(0, 0, 0);
   transition: transform .35s ease-out, box-shadow .35s ease-out;
   will-change: transform;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #00f2fe 0%, #7b61ff 45%, #ff007a 100%);
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
 }
 
 .services-stage-footer {
@@ -1221,7 +1235,8 @@ button {
 
 .about-stat {
   padding: 1.25rem;
-  text-align: center
+  text-align: center;
+  border-left: 4px solid #00f2fe;
 }
 
 .about-stat-value {
@@ -1313,6 +1328,7 @@ button {
   align-items: center;
   gap: 1rem;
   padding: 1.25rem 1.5rem;
+  border-left: 4px solid #00f2fe;
 }
 
 .ci-icon {
@@ -1342,7 +1358,8 @@ button {
 
 /* Social Grid */
 .social-section {
-  padding: 1.5rem
+  padding: 1.5rem;
+  border-left: 4px solid #00f2fe;
 }
 
 .social-grid {
